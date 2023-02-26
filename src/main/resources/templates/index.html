@@ -1,11 +1,41 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <title>Practica 01</title>
+<html  htmlns:th="http://www.thymeleaf.org">    
+    <head>        
+        <title>Práctica 03 Grupal</title>        
         <meta charset="UTF-8">
-    </head>
-    <body>
-        <div>Saludos</div>
-        <p th:text="Hola"></p>
+        <link href="../static/css/estilo1.css" rel="stylesheet" type="text/css"/>
+    </head>    
+    <body> 
+        <header th:replace="layout/plantillaIndex :: header"/>
+        <h2>Estados</h2>        
+        <br/>        
+        <a th:href="@{/nuevoEstado}">Nuevo Estado</a>        
+        <br/>
+        <br/>
+        <div th:if="${estados != null and !estados.empty}">            
+            <table border="1">                
+                <thead>                
+                <th>Nombre</th>                
+                <th>Capital</th>                
+                <th>Poblacion</th>                
+                <th>Costas</th>                
+                <th colspan="2">Acciones</th>                
+                </thead>                
+                <tbody>                    
+                    <tr th:each="estado : ${estados}">                        
+                        <td th:text="${estado.nombre}"></td>                        
+                        <td th:text="${estado.capital}"></td>                        
+                        <td th:text="${estado.poblacion}"></td>                        
+                        <td th:text="${estado.costas}"></td>                        
+                        <td><a th:href="@{/modificarEstado/} + ${estado.idEstado}">Modificar</a></td>    
+                        <td><a th:href="@{/eliminarEstado/} + ${estado.idEstado}">Eliminar</a></td>                    
+                    </tr>                
+                </tbody>            
+            </table>        
+        </div>        
+        <div th:if="${estados == null or estados.empty}">            
+            La lista de estados esta vacia...
+        </div>    
+        <footer th:replace="layout/plantillaIndex :: footer"/>
     </body>
 </html>

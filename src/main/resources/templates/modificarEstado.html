@@ -2,14 +2,18 @@
     <head>
         <title>Practica 03 Grupal</title>
         <meta charset="UTF-8">
+        <link href="../static/css/estilo1.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
+        <header th:replace="layout/plantilla :: header"/>
         <h2>Datos de los Estados</h2>
         <br/>
         <a th:href="@{/}">Regresar</a>
         <br/>
         <br/>
-        <form th:action="@{/guardarEstado}" method="POST" th:object="${estado}">
+        <form th:action="@{/guardarEstados}"
+              method="POST"
+              th:object="${estados}">
             <input type="hidden" name="idEstado" th:field="*{idEstado}"/>
             <label for="nombre">Nombre:</label>
             <br/>
@@ -27,8 +31,9 @@
             <br/>
             <input type="text" name="costas" th:field="*{costas}"/>
             <br/>
+            <br/>
             <input type="submit" name="Guardar" value="Guardar"/>
-
         </form>
+        <footer th:replace="layout/plantilla :: footer"/>
     </body>
 </html>
