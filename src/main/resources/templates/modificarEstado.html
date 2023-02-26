@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <title>Practica 03 Grupal</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <h2>Datos de los Estados</h2>
+        <br/>
+        <a th:href="@{/}">Regresar</a>
+        <br/>
+        <br/>
+        <form th:action="@{/guardarEstado}" method="POST" th:object="${estado}">
+            <input type="hidden" name="idEstado" th:field="*{idEstado}"/>
+            <label for="nombre">Nombre:</label>
+            <br/>
+            <input type="text" name="nombre" th:field="*{nombre}"/>
+            <br/>
+            <label for="nombre">Capital:</label>
+            <br/>
+            <input type="text" name="capital" th:field="*{capital}"/>
+            <br/>
+            <label for="nombre">Poblacion:</label>
+            <br/>
+            <input type="text" name="poblacion" th:field="*{poblacion}"/>
+            <br/>
+            <label for="nombre">Costas:</label>
+            <br/>
+            <input type="text" name="costas" th:field="*{costas}"/>
+            <br/>
+            <input type="submit" name="Guardar" value="Guardar"/>
+
+        </form>
+    </body>
+</html>
